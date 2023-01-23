@@ -1,2 +1,2 @@
 # pythonProjects
-This repository contains code learned from Udemy's 100 days of coding course to get me from a beginner in Python to a confident coder.
+This repository contains exercises and projects from Udemy's 100 days of Python coding course.
