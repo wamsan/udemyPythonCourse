@@ -1,4 +1,4 @@
-# This exercise has to swap the the values of variables a and b
+# In this exercise, I had to swap the the values of variables a and b
 # 🚨 Don't change the code below 👇
 a = input("a: ")
 b = input("b: ")
