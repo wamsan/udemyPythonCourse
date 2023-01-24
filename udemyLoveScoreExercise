@@ -1,0 +1,33 @@
+#You are going to write a program that tests the compatibility between two people.
+# 🚨 Don't change the code below 👇
+print("Welcome to the Love Calculator!")
+name1 = input("What is your name? \n")
+name2 = input("What is their name? \n")
+# 🚨 Don't change the code above 👆
+
+#Write your code below this line 👇
+lower_case_name1 = name1.lower()
+lower_case_name2 = name2.lower()
+
+merged_name = lower_case_name1 + lower_case_name2
+
+t = int(merged_name.count("t"))
+r = int(merged_name.count("r"))
+u = int(merged_name.count("u"))
+e = int(merged_name.count("e"))
+true = str(t + r + u + e)
+
+l = int(merged_name.count("l"))
+o = int(merged_name.count("o"))
+v = int(merged_name.count("v"))
+e = int(merged_name.count("e"))
+love = str(l + o + v + e)
+
+true_love = int(true+love)
+
+if true_love < 10 or true_love > 90:
+    print(f"Your score is {true_love}, you go together like coke and mentos.")
+elif true_love > 40 and true_love < 50:
+    print(f"Your score is {true_love}, you are alright together.")
+else:
+    print(f"Your score is {true_love}.")
