@@ -10,6 +10,6 @@ names = names_string.split(", ")
 
 #Write your code below this line 👇
 import random
-winner = random.randint(0,len(names))
+winner = random.randint(0,len(names)-1)
 
 print(f"{names[winner]} is going to buy the meal today!")
