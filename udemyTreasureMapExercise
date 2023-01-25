@@ -1,0 +1,29 @@
+# Your job is to write a program that allows you to mark a square on the map using a two-digit system.
+# 🚨 Don't change the code below 👇
+row1 = ["⬜️","⬜️","⬜️"]
+row2 = ["⬜️","⬜️","⬜️"]
+row3 = ["⬜️","⬜️","⬜️"]
+map = [row1, row2, row3]
+print(f"{row1}\n{row2}\n{row3}")
+position = input("Where do you want to put the treasure? ")
+# 🚨 Don't change the code above 👆
+
+#Write your code below this row 👇
+#separate input into single integer digits and put it in a list
+x = [int(i) for i in str(position)]
+
+#assign first index into column value
+column = x[0]-1
+
+#assign second index into row value
+row = x[1]-1
+
+#assign X to mark the spot in map
+map[row][column] = "X"
+
+
+
+#Write your code above this row 👆
+
+# 🚨 Don't change the code below 👇
+print(f"{row1}\n{row2}\n{row3}")
