@@ -1,0 +1,51 @@
+#Program a calculator with the basic functions to add, subtract, multiply, and divide
+from art import logo
+
+#Add
+def add(n1, n2):
+  """Add two numbers and return the result."""
+  return n1 + n2
+
+#Subtract
+def sub(n1, n2):
+  """Subtract the second number from the first, then return the result."""
+  return n1 - n2
+
+#Multiply
+def mult(n1, n2):
+  """Multiply two numbers and return the result."""
+  return n1 * n2
+
+#Divide
+def div(n1, n2):
+  """Divide the first number by the second number and return the result."""
+  return n1 / n2
+
+operations = {
+  "+": add,
+  "-": sub,
+  "*": mult,
+  "/": div,
+}
+def calculator():
+  print(logo)
+  
+  num1 = float(input("What's the first number?: "))
+  for symbol in operations:
+    print(symbol)
+  continue_calculation = True
+  while continue_calculation:
+    operation_symbol = input("Pick an operation: ")
+    num2 = float(input("What's the next number?: "))
+    calculation_fucntion = operations[operation_symbol]
+    answer = calculation_fucntion(num1, num2)
+    
+    print(f"{num1} {operation_symbol} {num2} = {answer}")
+    
+    if input(f"Type 'y' to continue calculating with {answer}, or type 'n' to exit.: ") == 'y': 
+      num1 = answer
+    else:
+      continue_calculation = False
+      calculator()
+      
+calculator()
