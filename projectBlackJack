@@ -1,0 +1,82 @@
+#BlackJack Game
+from replit import clear
+import random
+from art import logo
+
+def deal_card():
+  cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+  card = random.choice(cards)
+  return card
+
+def calculate_score(cards):
+  score = sum(cards)
+  if score == 21:
+    if len(cards) == 2:
+      score = 0
+      return score
+  for card in cards:
+    if card == 11:
+      if score > 21:
+        cards.remove(11)
+        cards.append(1)
+  return score
+
+def compare(userScore, computerScore):
+  if userScore == computerScore:
+    return "It's a draw!"
+  elif computerScore == 0:
+    return "You lose."
+  elif userScore == 0:
+    return "You win!"
+  elif userScore > 21:
+    return "You lose."
+  elif computerScore > 21:
+    return "You win!"
+  elif userScore > computerScore:
+    return "You win!"
+  else:
+    return "You lose."
+
+def blackjack():
+  indent = '\t'
+  user_cards = []
+  computer_cards = []
+  start = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
+  if start == "y":
+    clear()
+    print(logo)
+    for i in range (0,2):
+      user_cards.append(deal_card())
+      computer_cards.append(deal_card())
+    user_score = calculate_score(user_cards)
+    computer_score = calculate_score(computer_cards)
+    print(indent + f"Your cards: {user_cards}, current score: {user_score}")
+    print(indent + f"Computer's first card: {computer_cards[0]}")
+    if user_score == 0:
+      print(indent + f"Your final hand: {user_cards}, final score: {user_score}")
+      print(indent + f"Computer's final hand: {computer_cards}, final score: {computer_score}")
+      print("You win with a Blackjack!")
+    elif computer_score == 0:
+      print(indent + f"Your final hand: {user_cards}, final score: {user_score}")
+      print(indent + f"Computer's final hand: {computer_cards}, final score: {computer_score}")
+      print("You lost to the dealer's Blackjack!")
+    else:
+      draw_again = True
+      while draw_again == True:
+        draw_another_card = input("Type 'y' to get another card, type 'n' to pass: ")
+        if draw_another_card == "y":
+          user_cards.append(deal_card())
+          user_score = calculate_score(user_cards)
+          print(indent + f"Your cards: {user_cards}, current score: {user_score}")
+          print(indent + f"Computer's first card: {computer_cards[0]}")
+        else:
+          draw_again = False
+      while computer_score < 17:
+        computer_cards.append(deal_card())
+        computer_score = calculate_score(computer_cards)
+      print(indent + f"Your final hand: {user_cards}, final score: {user_score}")
+      print(indent + f"Computer's final hand: {computer_cards}, final score: {computer_score}")
+      compare(user_score, computer_score)
+    blackjack()
+
+blackjack()
