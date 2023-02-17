@@ -1,0 +1,55 @@
+#build a game that asks a player to guess which account has a higher follower count compared to another account
+from replit import clear
+import random
+from game_data import data
+from art import logo
+from art import vs
+
+def choose_account():
+  """Randomly chooses an account, then returns the account."""
+  account = random.choice(data)
+  return account
+
+#Game
+def high_low():
+  account_a = choose_account()
+  account_b = choose_account()
+  game_continues = True
+  score = 0
+  if account_a != account_b:
+    print(logo)
+    while game_continues == True:
+      print(f"Compare A: {account_a['name']}, a {account_a['description']}, from {account_a['country']}")
+      print(vs)
+      print(f"Compare B: {account_b['name']}, a {account_b['description']}, from {account_b['country']}")
+      player_choice = input("Who has more followers? Type 'A' or 'B': ").upper()
+      if player_choice == 'A':
+        if account_a['follower_count'] > account_b['follower_count']:
+          score += 1
+          account_a = account_b
+          account_b = choose_account()
+          clear()
+          print(logo)
+          print(f"You're right! Your current score: {score}")
+        else:
+          game_continues = False
+          clear()
+          print(logo)
+          print(f"You're wrong. Your final score: {score}")
+      elif player_choice == 'B':
+        if account_b['follower_count'] > account_a['follower_count']:
+          score += 1
+          account_a = account_b
+          account_b = choose_account()
+          clear()
+          print(logo)
+          print(f"You're right! Your current score: {score}")
+        else:
+          clear()
+          game_continues = False
+          print(logo)
+          print(f"You're wrong. Your final score: {score}")
+  else:
+    high_low()
+
+high_low()
