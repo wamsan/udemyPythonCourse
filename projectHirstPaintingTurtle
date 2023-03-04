@@ -1,0 +1,44 @@
+# Create a Hirst painting using the Turtle module
+import random
+import colorgram
+import turtle as t
+
+colours = colorgram.extract('image.jpg', 20)
+tim = t.Turtle()
+t.colormode(255)
+
+
+def random_pen_colour():
+    color = colours[random.randint(0, 19)].rgb
+    return tim.color(color)
+
+
+tim.penup()
+tim.hideturtle()
+tim.speed("fastest")
+tim.setposition(-450, -450)
+ypos = tim.ycor()
+
+
+def draw_dot():
+    random_pen_colour()
+    tim.dot(20)
+    tim.forward(100)
+    y = tim.ycor()
+    return y
+
+
+def set_position(newy):
+    tim.setx(-450)
+    tim.sety(newy + 100)
+
+
+while ypos < 400:
+    ypos = tim.ycor()
+    for _ in range(10):
+        new_y = draw_dot()
+    set_position(new_y)
+
+
+screen = t.Screen()
+screen.exitonclick()
